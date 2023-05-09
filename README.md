@@ -23,32 +23,29 @@ The figure below shows some images captured with flash, taken from the dataset, 
 (d) is fake too but is a metallic plate and thus showing spots of brightness, but lacks the presence of imprints of denomination, the rupee symbol and artistry.
 (e) is fake, made by printing the image of a real coin on a piece of paper and pasted on a plastic plate, and thus the image contains both the spots of brightness and the information and artistry similar to that of a real coin but lacks the lustrous appearance of a real coin. Also the paper surface appears rougher compared to a real coin.
 
-Keeping in mind these differences, a dataset of images was created containing 1750 images of various real and fake coins captured with flash and the images are classified into:
+Keeping in mind these differences, a dataset of images was created containing 1750 images of various real and fake coins captured with flash.  
+The images are then classified into the following types.  
 
 1. The front face of real/valid Indian coins consisting the imprint of common denominations- Rs 1, Rs 2, and Rs 5.
 
    <img src='https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F12921587%2F3cbee0087a974d872ff3684709e9ad2d%2Freal_coins_front.png?generation=1683302664681760&alt=media' width='60%'>
 
-   The images of front face of 1 rupee coins are contained in the folder named '1_rupee', images of 2 rupees in folder named '2_rupee' and 5 rupees in '5_rupee'.
-
 2. The back or reverse face of real/valid coins that do not show their denomination values.
 
    <img src='https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F12921587%2F23601ab0ffde0cf1465058ea94e03f80%2Freal_coins_back.png?generation=1683302796939179&alt=media' width='60%'>
-
-   These images are contained in the folder named 'reverse'
 
 3. Fake/Invalid coins.
 
    <img src='https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F12921587%2Fb4adf4b82266250237fcf61722732aa5%2Ffake_coins.png?generation=1683302878176987&alt=media' width='60%'>
 
-   These images are contained in the folder named 'invalid'
-
-
 The images were originally captured with a 12MP camera with a resolution of around 2000x4000 pixels and were processed in OpenCV to detect the region of the coin within the image, crop it along the region and resize it to a resolution of 256x256 pixels. 
 
 <img src='https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F12921587%2Fa9b0997b7704c2d679eb12db880e5f5f%2FImageProcessing.png?generation=1683394637379764&alt=media' width='75%'>
 
-This preprocessing was done to make it easier for ML models to learn important features. The code for processing is present in the file `Detect Coins.py` or the notebook version `Detect Coins.ipynb` and the steps involved in the processing are described in detail in the [Image Processing guide](https://github.com/ms-somanna/Indian-Coin-Denomination-and-Validity-Detection-using-Coin-Images-and-Neural-Network/blob/4791e5bd5ace60b79f69f92bd503de4d3796517d/Image%20Processing%20Steps.md). 
+This preprocessing was done to make it easier for ML models to learn important features. The code for processing is present in the file `Detect Coins.py` or the notebook version `Detect Coins.ipynb` and the steps involved in the processing are described in detail in the [Image Processing guide](https://github.com/ms-somanna/Coin-Denomination-and-Validity-Detection-using-Neural-Network-and-Coin-Images/blob/3de8710c37be6b539ff13ba43974a10926252a38/Image%20Processing%20Steps.md). 
+
+All the original images together take up over 3GB of space. Hence I'ev added only few of those images to this repo. You can find those images in the path `images/original`.  
+The processed images though take up only 70MB of space, hence all 1750 processed images were added, you can find them in `images/processed`. Ive trained the NN model on these processed images.
 
 ### Classification by the NN Model
 The NN model trained on this dataset can classify images as either:
