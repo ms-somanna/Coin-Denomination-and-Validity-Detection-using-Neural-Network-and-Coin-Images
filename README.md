@@ -18,37 +18,37 @@ The figure below shows some images captured with flash, taken from the dataset, 
 
 <img src='https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F12921587%2F5bf4e9119046d51e7c9258eada047ae0%2FRealVsFakeCoins.jpg?generation=1683396232330130&alt=media' width='75%'>
 
-(a) & (b) are images of a real coin, showing reflected light as bright spots on the coin.
-(c) is the image of a fake non-metallic coin, not showing any apparent bright spots of light.
-(d) is fake too but is a metallic plate and thus showing spots of brightness, but lacks the presence of imprints of denomination, the rupee symbol and artistry.
-(e) is fake, made by printing the image of a real coin on a piece of paper and pasted on a plastic plate, and thus the image contains both the spots of brightness and the information and artistry similar to that of a real coin but lacks the lustrous appearance of a real coin. Also the paper surface appears rougher compared to a real coin.
+(a) & (b) are images of a real coin, showing reflected light as bright spots on the coin.  
+(c) is the image of a fake non-metallic coin, not showing any apparent bright spots of light.  
+(d) is fake too but is a metallic plate and thus showing spots of brightness, but lacks the presence of imprints of denomination, the rupee symbol and artistry.  
+(e) is fake, made by printing the image of a real coin on a piece of paper and pasted on a plastic plate, and thus the image contains both the spots of brightness and the information and artistry similar to that of a real coin but lacks the lustrous appearance of a real coin. Also the paper surface appears rougher compared to a real coin.  
 
 Keeping in mind these differences, a dataset of images was created containing 1750 images of various real and fake coins captured with flash.  
 The images are then classified into the following types.  
 
-1. The front face of real/valid Indian coins consisting the imprint of common denominations- Rs 1, Rs 2, and Rs 5.
+1. The front face of real/valid Indian coins consisting the imprint of common denominations- Rs 1, Rs 2, and Rs 5.  
 
    <img src='https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F12921587%2F3cbee0087a974d872ff3684709e9ad2d%2Freal_coins_front.png?generation=1683302664681760&alt=media' width='60%'>
 
-2. The back or reverse face of real/valid coins that do not show their denomination values.
+2. The back or reverse face of real/valid coins that do not show their denomination values.  
 
    <img src='https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F12921587%2F23601ab0ffde0cf1465058ea94e03f80%2Freal_coins_back.png?generation=1683302796939179&alt=media' width='60%'>
 
-3. Fake/Invalid coins.
+3. Fake/Invalid coins.  
 
    <img src='https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F12921587%2Fb4adf4b82266250237fcf61722732aa5%2Ffake_coins.png?generation=1683302878176987&alt=media' width='60%'>
 
-The images were originally captured with a 12MP camera with a resolution of around 2000x4000 pixels and were processed in OpenCV to detect the region of the coin within the image, crop it along the region and resize it to a resolution of 256x256 pixels. 
+The images were originally captured with a 12MP camera with a resolution of around 2000x4000 pixels and were processed in OpenCV to detect the region of the coin within the image, crop it along the region and resize it to a resolution of 256x256 pixels.  
 
 <img src='https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F12921587%2Fa9b0997b7704c2d679eb12db880e5f5f%2FImageProcessing.png?generation=1683394637379764&alt=media' width='75%'>
 
-This preprocessing was done to make it easier for ML models to learn important features. The code for processing is present in the file `Detect Coins.py` or the notebook version `Detect Coins.ipynb` and the steps involved in the processing are described in detail in the [Image Processing guide](https://github.com/ms-somanna/Coin-Denomination-and-Validity-Detection-using-Neural-Network-and-Coin-Images/blob/3de8710c37be6b539ff13ba43974a10926252a38/Image%20Processing%20Steps.md). 
+This preprocessing was done to make it easier for ML models to learn important features. The code for processing is present in the file `detect_coins.py` or the notebook version `detect_coins.ipynb` and the steps involved in the processing are described in detail in the [Image Processing guide](https://github.com/ms-somanna/Coin-Denomination-and-Validity-Detection-using-Neural-Network-and-Coin-Images/blob/3de8710c37be6b539ff13ba43974a10926252a38/Image%20Processing%20Steps.md).  
 
-All the original images together take up over 3GB of space. Hence I'ev added only few of those images to this repo. You can find those images in the path `images/original`.  
-The processed images though take up only 70MB of space, hence all 1750 processed images were added, you can find them in `images/processed`. Ive trained the NN model on these processed images.
+All the original images together take up over 3GB of space. Hence I'ev added only few of those images to this repo. You can find those images in the path `images/original`. Let me know if you want to have all the images.   
+The processed images though take up only 70MB of space, hence all 1750 processed images were added, you can find them in `images/processed`. Ive trained the NN model on these processed images.  
 
 ### Classification by the NN Model
-The NN model trained on this dataset can classify images as either:
+The NN model trained on this dataset can classify images as either:  
 1. 1 Rupee Coin
 2. 2 Rupee Coin
 3. 5 Rupee Coin
@@ -57,10 +57,15 @@ The NN model trained on this dataset can classify images as either:
 
 ### Arcitecture of the Model
 
-![NN Model 1 Architecture-Page-2 drawio(2)](https://user-images.githubusercontent.com/32904377/236687394-d39f5997-cd9e-4bc9-a66a-83efe1216625.svg)
+![NN Model 1 Architecture-Page-2 drawio(2)](https://user-images.githubusercontent.com/32904377/236687394-d39f5997-cd9e-4bc9-a66a-83efe1216625.svg)  
 
 ### Performance of the Model
 Test Loss: 0.06  
-Test Accuracy: 0.98
+Test Accuracy: 0.98  
 
-<img src='https://user-images.githubusercontent.com/32904377/236687810-adb99363-d445-4c40-8cc5-e5582b0bd41a.jpg' height='75%'>
+<img src='https://user-images.githubusercontent.com/32904377/236687810-adb99363-d445-4c40-8cc5-e5582b0bd41a.jpg' height='75%'>  
+
+I've created a notebook containing the setup, building, and evaluation of the model. You can find it [here](https://github.com/ms-somanna/Coin-Denomination-and-Validity-Detection-using-Neural-Network-and-Coin-Images/blob/fc0136e7b31840bab793142e021dac21b3e891fa/nn_model_building_evaluation_and_prediction.ipynb).
+
+Find the same dataset on Kaggle [here](https://www.kaggle.com/datasets/mssomanna/indian-coin-images-dataset-incl-fake-coins?datasetId=3226222&sortBy=dateRun&tab=profile).  
+And the same notebook [here](https://www.kaggle.com/code/mssomanna/coin-classification-using-cnn/edit).  
